@@ -1,7 +1,7 @@
 import React from "react";
 
-const Dropdown = () => {
+const Listy = () => {
   return <div></div>;
 };
 
-export default Dropdown;
+export default Listy;

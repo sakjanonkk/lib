@@ -12,11 +12,11 @@ const LibrabyImg = ({ socialImg, caption }) => {
         // layout="responsive"
       />
       {/* Overlay */}
-      <div className="flex justify-center w-full h-full items-center absolute top-0 left-0 right-0 bottom-0 rounded-[100%] hover:bg-black/20 group">
+      <div className="flex justify-center w-full h-full items-center absolute top-0 left-0 right-0 bottom-0 rounded-[100%] hover:bg-black/20 group  dark:text-white">
         {/* <p className="text-gray-300 opacity-100 transition-opacity duration-300 pointer-events-none">
           {caption}
         </p> */}
-        <p className="text-gray-300 hidden group-hover:block">
+        <p className="text-gray-300 hidden group-hover:block dark:text-white">
           <FaLocationArrow size={30} className="z-10" />
         </p>
       </div>

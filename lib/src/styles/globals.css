@@ -10,7 +10,8 @@ html {
 
 @layer base {
   body {
-    @apply bg-[white] text-[#1f2937] tracking-wide
+    @apply bg-[white] text-[#202630] tracking-wide
+    
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -33,7 +34,7 @@ html {
     @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#FF0000] to-[#263238] text-white
   }
   button {
-    @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#38F297] to-[#05ff86] text-white
+    @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#0a4122] to-[#25a556] text-white
   }
   .circlehover a {
     @apply rounded-full hover:shadow-xl hover:shadow-gray-400 hover:scale-110 transform transition duration-300 ease-in-out
@@ -50,7 +51,7 @@ html {
     transition: 0.5s;
     background-size: 200% auto;
     color: white;            
-    box-shadow: 0 0 20px #eee;
+    box-shadow: 0 0 20px #706363;
     border-radius: 10px;
     display: block;
   }

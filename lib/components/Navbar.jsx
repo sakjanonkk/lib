@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
-import { BsFillTelephoneFill } from "react-icons/bs";
+import { BsFillTelephoneFill, BsFillMoonFill, BsSun } from "react-icons/bs";
 import { TbLocationFilled } from "react-icons/tb";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useEffect } from "react";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -14,7 +15,40 @@ const Navbar = () => {
   const [shadow, setShadow] = useState(false);
   const [navBg, setNavBg] = useState("#ecf0f3");
   const [navColor, setNavColor] = useState("#2c2b2b");
+  const { systemTheme, theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
+  {
+    /* =======> dark mode set-up  <======== */
+  }
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const renderThemeChanger = () => {
+    if (!mounted) return null;
+    const currentTheme = theme === "system" ? systemTheme : theme;
+    if (currentTheme == "dark") {
+      return (
+        <BsSun
+          className="w-7 h-7 dark:text-[white]"
+          role="button"
+          onClick={() => setTheme("light")}
+        />
+      );
+    } else {
+      return (
+        <BsFillMoonFill
+          className="w-7 h-7"
+          role="button"
+          onClick={() => setTheme("dark")}
+        />
+      );
+    }
+  };
+
+  {
+    /* ====================================== */
+  }
   const handleNav = () => {
     setNav(!nav);
   };
@@ -44,11 +78,15 @@ const Navbar = () => {
           : "fixed w-full h-100 bg-[white] z-[9999]"
       }
     >
-      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
+      <div
+        className="flex justify-between items-center w-full h-full px-2 2xl:px-16 dark:bg-[#202020]
+"
+      >
         <div className=" p-4 ">
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link href="/">
               <Image
+                className="hover:scale-105 ease-in duration-200"
                 src="assets/LogoKKU.svg"
                 width={50}
                 height={120}
@@ -58,7 +96,7 @@ const Navbar = () => {
             </Link>
             <span
               style={{ marginLeft: "20px" }}
-              className="lg:text-xl md:text-l"
+              className="lg:text-xl md:text-l  dark:text-[#fcfcfc]"
             >
               ENGINEER LIBRARY
             </span>
@@ -67,10 +105,16 @@ const Navbar = () => {
 
         <div className="ml-auto">
           <ul className="hidden md:flex p-10">
+            <Link href="/#map">
+              <li className="ml-12 font-semibold text-md tracking-widest uppercase hover:border-b hover:scale-105 ease-in duration-200 hover:text-[#f9a826] dark:text-[#fcfcfc]">
+                {" "}
+                Admin{" "}
+              </li>
+            </Link>
             <ul className="ml-12 font-semibold text-md tracking-widest hover:border-b hover:scale-105 ease-in duration-200">
               <li>
                 <Link legacyBehavior href="/#book">
-                  <a className="hover:text-[#f9a826] flex items-center ">
+                  <a className="hover:text-[#f9a826] flex items-center hover:scale-105 ease-in duration-200 dark:text-[#fcfcfc]">
                     BOOK <IoMdArrowDropdown />
                   </a>
                 </Link>
@@ -83,7 +127,7 @@ const Navbar = () => {
             </ul>
 
             <Link href="/#map">
-              <li className="ml-12 font-semibold text-md tracking-widest uppercase hover:border-b hover:scale-105 ease-in duration-200 hover:text-[#f9a826]">
+              <li className="ml-12 font-semibold text-md tracking-widest uppercase hover:border-b hover:scale-105 ease-in duration-200 hover:text-[#f9a826] dark:text-[#fcfcfc]">
                 {" "}
                 Map{" "}
               </li>
@@ -91,16 +135,30 @@ const Navbar = () => {
             <div className=""></div>
           </ul>
           <div onClick={handleNav} className="md:hidden p-6">
-            <AiOutlineMenu size={25} />
+            <AiOutlineMenu size={25} className="dark:text-white" />
           </div>
         </div>
+        {/*============ DARKMODE BUTTON ADDED HERE!! ============= */}
+        <div className="hidden md:flex pr-10">{renderThemeChanger()}</div>
+        {/*============ DARKMODE ADDED HERE!! ============= */}
 
-        {/*============ M ADD I CON HERE !! ============= */}
-        <div
-          className="rounded-full shadow-lg shadow-[#464e5a] p-3 cursor-pointer"
+        {/*============ M ADD ICON HERE !! ============= */}
+        <Image
+          src="assets/LogoKKU.svg"
+          alt="/"
+          width={50}
+          height={50}
+          className="rounded-full shadow-lg shadow-[#707172] cursor-pointer hidden md:flex  "
+          style={{ width: "70px", height: "70px" }}
+        />
+        {/* <img
+          src="assets/LogoKKU.svg"
+          width={800}
+          height={500}
+          className="rounded-full shadow-lg shadow-[#464e5a] cursor-pointer hidden md:flex p-10"
           style={{ width: "50px", height: "50px" }}
-        ></div>
-        {/*============ M ADD I CON HERE !! ============= */}
+        ></img> */}
+        {/*============ M ADD ICON HERE !! ============= */}
       </div>
 
       <div
@@ -110,16 +168,18 @@ const Navbar = () => {
             : ""
         }
       >
+        {/* ***************** Navbar for MOBILE ***************** */}
         <div
           className={
             nav
-              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45] h-screen bg-[white] p-10 ease-in duration-500"
-              : "fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45] h-screen bg-[white] p-10 ease-in duration-500"
+              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45] h-screen bg-[white] p-10 ease-in duration-500 dark:bg-[#1d1d24]"
+              : "fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45] h-screen bg-[white] p-10 ease-in duration-500 dark:bg-gray-900"
           }
         >
           <div>
             <div className="flex w-full items-center justify-between">
               <Image src="assets/LogoKKU.svg" width={50} height={120} alt="/" />
+              <div className="">{renderThemeChanger()}</div>
               <div
                 onClick={handleNav}
                 className="rounded-full shadow-lg shadow-gray-300 p-2 cursor-pointer bg-[#efefef]"
@@ -127,7 +187,7 @@ const Navbar = () => {
                 <AiOutlineClose size={20} />
               </div>
             </div>
-            <div className="border-b border-gray-300 my-4">
+            <div className="border-b border-gray-300 my-4 dark:text-[#efefef]">
               <p className="w-[85%] md:w-[90%] py-4 uppercase text-lg">
                 Let&apos;s Book a room !
               </p>
@@ -138,7 +198,7 @@ const Navbar = () => {
               <Link href="/#book">
                 <li
                   onClick={() => setNav(false)}
-                  className="text-md py-4 hover:text-[#f9a826] "
+                  className="text-md py-4 hover:text-[#f9a826] dark:text-[#efefef] "
                 >
                   Book here
                 </li>
@@ -146,7 +206,7 @@ const Navbar = () => {
               <Link href="/">
                 <li
                   onClick={() => setNav(false)}
-                  className="text-md py-4 hover:text-[#f9a826] "
+                  className="text-md py-4 hover:text-[#f9a826] dark:text-[#efefef]"
                 >
                   Booking list
                 </li>
@@ -154,7 +214,7 @@ const Navbar = () => {
               <Link href="/#map">
                 <li
                   onClick={() => setNav(false)}
-                  className="text-md py-4 hover:text-[#f9a826] "
+                  className="text-md py-4 hover:text-[#f9a826] dark:text-[#efefef] "
                 >
                   Map
                 </li>
@@ -162,10 +222,10 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="pt-80 my-1">
-            <p className="uppercase tracking-widest text-[black]">
+            <p className="uppercase tracking-widest text-[black] dark:text-[#efefef]">
               Our Contacts
             </p>
-            <div className="flex items-center justify-between my-3 w-full sm:w-[100%]">
+            <div className="flex items-center justify-between my-3 w-full sm:w-[100%] dark:text-white">
               <a href="https://www.facebook.com/kkuenglib" target="_blank">
                 {" "}
                 <div
@@ -185,7 +245,9 @@ const Navbar = () => {
               >
                 <BsFillTelephoneFill />
                 {isCopied && (
-                  <div className="text-xs text-[green] ml-4">Number copied</div>
+                  <div className="text-xs text-[#218a21] ml-4 dark:text-white">
+                    Number copied
+                  </div>
                 )}
               </div>
 
