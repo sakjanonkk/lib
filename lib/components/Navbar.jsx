@@ -67,7 +67,12 @@ const Navbar = () => {
                 alt="/"
               />
             </Link>
-            <span style={{ marginLeft: "10px" }}>EN LIBRARY</span>
+            <span
+              style={{ marginLeft: "20px" }}
+              className="lg:text-xl md:text-l"
+            >
+              ENGINEER LIBRARY
+            </span>
           </div>
         </div>
 

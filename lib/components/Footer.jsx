@@ -58,7 +58,15 @@ const Footer = () => {
           >
             KKUL™ สำนักหอสมุด
           </a>
-          . All Rights Reserved.
+          . All Rights Reserved. Icons by{" "}
+          <a
+            href="https://storyset.com/"
+            target="_blank"
+            className="hover:underline"
+          >
+            {""}
+            Storyset.
+          </a>
         </span>
       </div>
     </footer>

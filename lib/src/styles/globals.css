@@ -40,6 +40,7 @@ html {
     @apply rounded-full hover:shadow-xl hover:shadow-gray-400 hover:scale-110 transform transition duration-300 ease-in-out
   }
 
+  
            
   .btn-grad {
     background-image: linear-gradient(to right, #1D4350 0%, #B30000  51%, #1D4350  100%);
@@ -97,5 +98,8 @@ ul li ul li a:hover {
   }
 
 ul li ul li a { transition: all 0.5s ease; }
+
+
+
  
 }

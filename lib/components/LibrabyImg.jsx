@@ -8,8 +8,8 @@ const LibrabyImg = ({ socialImg, caption }) => {
       <Image
         src={socialImg}
         alt="LibrabyImg"
-        className="w-full h-full"
-        layout="responsive"
+        className="w-full h-full layout"
+        // layout="responsive"
       />
       {/* Overlay */}
       <div className="flex justify-center w-full h-full items-center absolute top-0 left-0 right-0 bottom-0 rounded-[100%] hover:bg-black/20 group">
