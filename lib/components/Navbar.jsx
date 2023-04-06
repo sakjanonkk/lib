@@ -45,17 +45,6 @@ const Navbar = () => {
       }
     >
       <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
-        {/* <div className=" p-4 ">
-          <Link href="/">
-            <Image
-              src="assets/LogoKKU.svg"
-              width={50}
-              height={120}
-              style={{ inset: "10px" }}
-              alt="/"
-            />
-          </Link>
-        </div> */}
         <div className=" p-4 ">
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link href="/">
@@ -76,7 +65,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div>
+        <div className="ml-auto">
           <ul className="hidden md:flex p-10">
             <ul className="ml-12 font-semibold text-md tracking-widest hover:border-b hover:scale-105 ease-in duration-200">
               <li>
@@ -105,6 +94,13 @@ const Navbar = () => {
             <AiOutlineMenu size={25} />
           </div>
         </div>
+
+        {/*============ M ADD I CON HERE !! ============= */}
+        <div
+          className="rounded-full shadow-lg shadow-[#464e5a] p-3 cursor-pointer"
+          style={{ width: "50px", height: "50px" }}
+        ></div>
+        {/*============ M ADD I CON HERE !! ============= */}
       </div>
 
       <div
