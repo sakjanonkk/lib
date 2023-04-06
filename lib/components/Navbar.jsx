@@ -120,7 +120,7 @@ const Navbar = () => {
                 </Link>
                 <ul className="dropdown p-4">
                   <li>
-                    <a href="#">Booking Request</a>
+                    <a href="#">Booking List</a>
                   </li>
                 </ul>
               </li>
